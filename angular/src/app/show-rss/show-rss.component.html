@@ -1,0 +1,19 @@
+<p>show-rss works!</p>
+
+<select (change)='onOptionsSelected($event)'>
+  <option *ngFor="let rss of listRss.list" [value]="rss.id" >{{rss.title}}</option>
+</select>
+
+<div *ngFor="let flux of listFlux?.liste" class="rcorners">
+  <h3>{{flux.title}}</h3>
+  Publié le {{flux.datePublication | date:'medium':undefined:'fr'}}
+  <p *ngIf="!flux.html" class="fade"> {{flux.description}} </p>
+<!--  <p *ngIf="flux.html" class="fade" [innerHTML]="flux.description"></p>-->
+  <p *ngIf="flux.html"  line-clamp row="3">
+    <span [innerHTML]="flux.description" #content></span>
+  </p>
+  <a [href]="flux.link">suite</a>
+  <hr/>
+</div>
+
+
